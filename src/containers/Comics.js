@@ -1,12 +1,11 @@
 // Hooks imports
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 // Components imports
 
 // Container logic
-const Comics = () => {
+const Comics = ({ value }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [pagination, setPagination] = useState({ skip: 0, limit: 100 });
@@ -16,7 +15,7 @@ const Comics = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://marvel-backend-jm.herokuapp.com/comics?skip=${pagination.skip}&limit=${pagination.limit}`
+          `https://marvel-backend-jm.herokuapp.com/comics?skip=${pagination.skip}&limit=${pagination.limit}&title=${value}`
         );
         console.log("Data ===>", response.data);
         setData(response.data);

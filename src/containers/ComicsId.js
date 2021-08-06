@@ -1,6 +1,6 @@
 // Hooks imports
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // Components imports
@@ -37,7 +37,7 @@ const ComicsId = () => {
       <ul className="comicItem">
         {data.comics.map((comic, index) => {
           return (
-            <li>
+            <li key={comic.id}>
               <span>{comic.title}</span>
               <img
                 src={comic.thumbnail.path + "." + comic.thumbnail.extension}

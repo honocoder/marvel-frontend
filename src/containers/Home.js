@@ -6,7 +6,7 @@ import axios from "axios";
 // Components imports
 
 // Container logic
-const Home = () => {
+const Home = ({ value }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [pagination, setPagination] = useState({ skip: 0, limit: 100 });
@@ -16,7 +16,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://marvel-backend-jm.herokuapp.com/characters?skip=${pagination.skip}&limit=${pagination.limit}`
+          `https://marvel-backend-jm.herokuapp.com/characters?skip=${pagination.skip}&limit=${pagination.limit}&name=${value}`
         );
         console.log("Data ===>", response.data);
         setData(response.data);
@@ -27,10 +27,13 @@ const Home = () => {
     };
     // Call of the fetching function
     fetchData();
-  }, []);
+  }, [pagination.skip, pagination.limit, value]);
 
   return isLoading ? (
-    <span>Loading...</span>
+    <div className="loading">
+      <span>Loading...</span>
+      <img src="./assets/iron-man-loader.gif" alt="" />
+    </div>
   ) : (
     <div className="main">
       <ul className="charactersList">
