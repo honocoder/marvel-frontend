@@ -4,23 +4,65 @@ import logo from "../assets/logo-marvel.png";
 const Header = ({ userToken, setUser }) => {
   return userToken ? (
     <div className="header-loggedin">
-      <Link to={"/"}>
-        <img src={logo} alt="" />
-      </Link>
-      <input type="search" placeholder="Rechercher" />
-      <div>
-        <Link onClick={() => setUser(null)}>Se déconnecter</Link>
+      <div className="top-bar">
+        <input type="search" placeholder="Rechercher" />
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
+        <div className="buttons">
+          <Link onClick={() => setUser(null)}>Se déconnecter</Link>
+        </div>
+      </div>
+      <div className="menu">
+        <div className="menu-elem">
+          <Link to={"/"} className="charac-btn">
+            Personnages
+          </Link>
+        </div>
+        <div className="menu-elem">
+          <Link to={"/comics"} className="comics-btn">
+            Comics
+          </Link>
+        </div>
+        <div className="menu-elem">
+          <Link className="fav-btn">Favoris</Link>
+        </div>
       </div>
     </div>
   ) : (
     <div className="header">
-      <Link to={"/"}>
-        <img src={logo} alt="" />
-      </Link>
-      <input type="search" placeholder="Rechercher" />
-      <div>
-        <Link to={"/user/signup"}>S'inscrire</Link>
-        <Link to={"/user/login"}>Se connecter</Link>
+      <div className="top-bar">
+        <input type="search" placeholder="Rechercher" />
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
+        <div className="buttons">
+          <div className="signup-div">
+            <Link to={"/user/signup"} className="signup-btn">
+              S'inscrire
+            </Link>
+          </div>
+          <div className="login-div">
+            <Link to={"/user/login"} className="login-btn">
+              Se connecter
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="menu">
+        <div className="menu-elem">
+          <Link to={"/"} className="charac-btn">
+            Personnages
+          </Link>
+        </div>
+        <div className="menu-elem">
+          <Link to={"/comics"} className="comics-btn">
+            Comics
+          </Link>
+        </div>
+        <div className="menu-elem">
+          <Link className="fav-btn">Favoris</Link>
+        </div>
       </div>
     </div>
   );

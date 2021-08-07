@@ -35,15 +35,15 @@ const ComicsId = () => {
     <div className="main">
       <h2 className="hero-name">{data.name}</h2>
       <ul className="comicItem">
-        {data.comics.map((comic, index) => {
+        {data.comics.map((comics, index) => {
           return (
-            <li key={comic.id}>
-              <span>{comic.title}</span>
+            <li key={comics._id}>
+              <span>{comics.title}</span>
               <img
-                src={comic.thumbnail.path + "." + comic.thumbnail.extension}
+                src={comics.thumbnail.path + "." + comics.thumbnail.extension}
                 alt=""
               />
-              <span>{comic.description}</span>
+              <span>{comics.description}</span>
             </li>
           );
         })}

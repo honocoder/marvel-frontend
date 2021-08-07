@@ -37,7 +37,7 @@ function App() {
         <Route path="/comics">
           <Comics value={value} />
         </Route>
-        <Route path="/comics/:id">
+        <Route exact path="/comics/:id">
           <ComicsId />
         </Route>
         <Route path="/user/signup">

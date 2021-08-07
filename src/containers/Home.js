@@ -36,10 +36,12 @@ const Home = ({ value }) => {
     </div>
   ) : (
     <div className="main">
-      <ul className="charactersList">
+      {/* <ul className="charactersList"> */}
+      <div className="charactersList">
         {data.results.map((character, index) => {
           return (
-            <li key={character._id}>
+            <div className="card">
+              {/* <li key={character._id} className="char-card"> */}
               <div className="character-name">
                 <h4>{character.name}</h4>
                 <Link to={`/comics/${character._id}`}>
@@ -50,14 +52,19 @@ const Home = ({ value }) => {
                       character.thumbnail.extension
                     }
                     alt=""
+                    className="char-img"
                   />
+                  <div className="char-desc">
+                    <div className="description">{character.description}</div>
+                  </div>
                 </Link>
-                <p>{character.description}</p>
               </div>
-            </li>
+              {/* </li> */}
+            </div>
           );
         })}
-      </ul>
+      </div>
+      {/* </ul> */}
       {pagination.skip >= 100 && (
         <button
           onClick={() => {

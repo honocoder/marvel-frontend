@@ -32,22 +32,29 @@ const Comics = ({ value }) => {
     <span>Loading...</span>
   ) : (
     <div className="main">
-      <ul className="comicsList">
+      {/* <ul className="comicsList"> */}
+      <div className="comics-list">
         {data.results.map((comic, index) => {
           return (
-            <li key={comic._id}>
+            // <li key={comic._id}>
+            <div className="comic-card">
               <div className="comic-name">
-                <h4>{comic.name}</h4>
+                <h4>{comic.title}</h4>
                 <img
                   src={comic.thumbnail.path + "." + comic.thumbnail.extension}
                   alt=""
+                  className="comic-img"
                 />
-                <p>{comic.description}</p>
+                <div className="comic-desc">
+                  <span className="comic-description">{comic.description}</span>
+                </div>
               </div>
-            </li>
+            </div>
+            // </li>
           );
         })}
-      </ul>
+      </div>
+      {/* </ul> */}
       {pagination.skip >= 100 && (
         <button
           onClick={() => {

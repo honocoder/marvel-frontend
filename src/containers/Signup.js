@@ -1,5 +1,4 @@
 import axios from "axios";
-import { SetFunctionName } from "es-abstract/es2019";
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 
@@ -15,7 +14,7 @@ const Signup = ({ setUser }) => {
   // Functions to handle changes and submit
   const handleNameChange = (event) => {
     const value = event.target.value;
-    SetFunctionName(value);
+    setUsername(value);
   };
 
   const handleEmailChange = (event) => {
