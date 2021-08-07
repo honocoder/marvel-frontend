@@ -32,11 +32,9 @@ const Comics = ({ value }) => {
     <span>Loading...</span>
   ) : (
     <div className="main">
-      {/* <ul className="comicsList"> */}
       <div className="comics-list">
         {data.results.map((comic, index) => {
           return (
-            // <li key={comic._id}>
             <div className="comic-card">
               <div className="comic-name">
                 <h4>{comic.title}</h4>
@@ -50,11 +48,10 @@ const Comics = ({ value }) => {
                 </div>
               </div>
             </div>
-            // </li>
           );
         })}
       </div>
-      {/* </ul> */}
+
       {pagination.skip >= 100 && (
         <button
           onClick={() => {

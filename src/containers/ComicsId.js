@@ -19,6 +19,7 @@ const ComicsId = () => {
           `https://marvel-backend-jm.herokuapp.com/comics/${id}`
         );
         console.log("Data ===>", response.data);
+
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -28,6 +29,8 @@ const ComicsId = () => {
     // Call of the fetching function
     fetchData();
   }, [id]);
+
+  console.log(id);
 
   return isLoading ? (
     <span>Loading...</span>

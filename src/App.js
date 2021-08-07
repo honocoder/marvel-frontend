@@ -34,7 +34,7 @@ function App() {
     <Router>
       <Header userToken={userToken} setUser={setUser} />
       <Switch>
-        <Route path="/comics">
+        <Route exact path="/comics">
           <Comics value={value} />
         </Route>
         <Route exact path="/comics/:id">

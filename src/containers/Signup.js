@@ -49,6 +49,7 @@ const Signup = ({ setUser }) => {
       console.log(error.message);
       if (error.message.status === 409) {
         setErrorMessage("This email is already used.");
+        console.log(error.response);
       }
     }
   };
