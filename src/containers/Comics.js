@@ -20,13 +20,14 @@ const Comics = ({ value }) => {
         console.log("Data ===>", response.data);
         setData(response.data);
         setIsLoading(false);
+        console.log(response.data.results[0]);
       } catch (error) {
         console.log(error.message);
       }
     };
     // Call of the fetching function
     fetchData();
-  }, []);
+  }, [pagination.skip, pagination.limit, value]);
 
   return isLoading ? (
     <span>Loading...</span>
@@ -66,7 +67,7 @@ const Comics = ({ value }) => {
       <button
         onClick={() => {
           const newObj = { ...pagination };
-          newObj.skip -= 100;
+          newObj.skip += 100;
           setPagination(newObj);
         }}
       >

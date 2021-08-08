@@ -1,7 +1,12 @@
 import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo-marvel.png";
 
-const Header = ({ userToken, setUser }) => {
+const Header = ({ userToken, setUser, setValue }) => {
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setValue(value);
+  };
+
   return userToken ? (
     <div className="header-loggedin">
       <div className="top-bar">
@@ -32,7 +37,7 @@ const Header = ({ userToken, setUser }) => {
   ) : (
     <div className="header">
       <div className="top-bar">
-        <input type="search" placeholder="Rechercher" />
+        <input type="search" placeholder="Rechercher" onChange={handleChange} />
         <Link to={"/"}>
           <img src={logo} alt="" />
         </Link>

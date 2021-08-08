@@ -15,23 +15,23 @@ const ComicsId = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://marvel-backend-jm.herokuapp.com/comics/${id}`
-        );
-        console.log("Data ===>", response.data);
-
-        setData(response.data);
+        const response = await axios
+          .get(`https://marvel-backend-jm.herokuapp.com/comics/${id}`)
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+        console.log("Response ====>", response);
+        setData(data);
         setIsLoading(false);
+        // console.log("Data ===>", response.data);
       } catch (error) {
         console.log(error.message);
       }
     };
+
     // Call of the fetching function
     fetchData();
-  }, [id]);
-
-  console.log(id);
-
+  }, [data, id]);
+  console.log("Reponse ===>", data);
   return isLoading ? (
     <span>Loading...</span>
   ) : (

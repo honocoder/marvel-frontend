@@ -1,14 +1,13 @@
 // Hooks imports
 import "./App.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 
 // Containers & components imports
 import Home from "./containers/Home";
 import Comics from "./containers/Comics";
-import ComicsId from "./containers/ComicsId";
+import ComicsByCharacter from "./containers/ComicsByCharacter";
 import Header from "./components/Header";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
@@ -32,13 +31,13 @@ function App() {
 
   return (
     <Router>
-      <Header userToken={userToken} setUser={setUser} />
+      <Header userToken={userToken} setUser={setUser} setValue={setValue} />
       <Switch>
         <Route exact path="/comics">
           <Comics value={value} />
         </Route>
         <Route exact path="/comics/:id">
-          <ComicsId />
+          <ComicsByCharacter />
         </Route>
         <Route path="/user/signup">
           <Signup setUser={setUser} />
