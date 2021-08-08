@@ -10,7 +10,7 @@ const Home = ({ value }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [pagination, setPagination] = useState({ skip: 0, limit: 100 });
-
+  // const [show, setShow] = useState(false);
   // Function to fetch through data using a useEffect
   useEffect(() => {
     const fetchData = async () => {
@@ -43,17 +43,19 @@ const Home = ({ value }) => {
               <div className="character-name">
                 <h4>{character.name}</h4>
                 <Link to={`/comics/${character._id}`}>
-                  <img
-                    src={
-                      character.thumbnail.path +
-                      "." +
-                      character.thumbnail.extension
-                    }
-                    alt=""
-                    className="char-img"
-                  />
-                  <div className="char-desc">
-                    <div className="description">{character.description}</div>
+                  <div className="img-group">
+                    <img
+                      src={
+                        character.thumbnail.path +
+                        "." +
+                        character.thumbnail.extension
+                      }
+                      alt=""
+                      className="char-img"
+                    />
+                    <div className="overlay">
+                      <div className="description">{character.description}</div>
+                    </div>
                   </div>
                 </Link>
               </div>
@@ -62,26 +64,28 @@ const Home = ({ value }) => {
         })}
       </div>
 
-      {pagination.skip >= 100 && (
+      <div className="nav-btns">
+        {pagination.skip >= 100 && (
+          <button
+            onClick={() => {
+              const newObj = { ...pagination };
+              newObj.skip -= 100;
+              setPagination(newObj);
+            }}
+          >
+            Page précédente
+          </button>
+        )}
         <button
           onClick={() => {
             const newObj = { ...pagination };
-            newObj.skip -= 100;
+            newObj.skip += 100;
             setPagination(newObj);
           }}
         >
-          Page précédente
+          Page suivante
         </button>
-      )}
-      <button
-        onClick={() => {
-          const newObj = { ...pagination };
-          newObj.skip += 100;
-          setPagination(newObj);
-        }}
-      >
-        Page suivante
-      </button>
+      </div>
     </div>
   );
 };

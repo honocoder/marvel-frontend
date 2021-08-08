@@ -42,17 +42,19 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div>
+    <div className="form-div">
       <h1>Log in</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <input type="text" placeholder="Email" onChange={handleEmailChange} />
         <input
           type="password"
           placeholder="Password"
           onChange={handlePasswordChange}
         />
-        <button type="submit">Put your mask on !</button>
-        <Link to={"/user/signup"}>
+        <button type="submit" className="form-btn">
+          Put your mask on !
+        </button>
+        <Link to={"/user/signup"} className="form-link">
           Not a superhero yet ? Sign up to the Official Superhero Register.
         </Link>
       </form>

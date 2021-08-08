@@ -39,14 +39,19 @@ const Comics = ({ value }) => {
             <div className="comic-card">
               <div className="comic-name">
                 <h4>{comic.title}</h4>
-                <img
-                  src={comic.thumbnail.path + "." + comic.thumbnail.extension}
-                  alt=""
-                  className="comic-img"
-                />
-                <div className="comic-desc">
-                  <span className="comic-description">{comic.description}</span>
+                <div className="img-group">
+                  <img
+                    src={comic.thumbnail.path + "." + comic.thumbnail.extension}
+                    alt=""
+                    className="comic-img"
+                  />
+                  <div className="overlay">
+                    <div className="description">{comic.description}</div>
+                  </div>
                 </div>
+                {/* <div className="comic-desc"> */}
+
+                {/* </div> */}
               </div>
             </div>
           );

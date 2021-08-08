@@ -1,3 +1,7 @@
+body {
+  margin: 0px;
+}
+
 /*---------- HEADER (NOT LOGGED IN) ----------*/
 .header {
   height: 200px;
@@ -63,16 +67,29 @@
   justify-content: center;
   align-items: center;
   margin-top: 3px;
-  border: 2px solid red;
+}
+
+.menu-elem:hover {
+  border-bottom: 1px solid red;
 }
 
 .charac-btn,
 .comics-btn,
 .fav-btn {
   text-decoration: none;
-  color: red;
+  color: white;
   font-size: 16px;
   font-family: sans-serif;
+}
+
+.searchbar {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid red;
+}
+
+.searchbar::placeholder {
+  color: white;
 }
 
 /*---------- HEADER (LOGGED IN) ----------*/
@@ -84,6 +101,7 @@
 /*---------- HOME ----------*/
 .main {
   background-color: #252525;
+  padding-bottom: 20px;
 }
 
 .charactersList {
@@ -98,11 +116,12 @@
 .card {
   margin-right: 50px;
   width: 200px;
+  height: 350px;
   /* flex: 1 200px; */
 }
 
 .character-name {
-  height: 500px;
+  height: 350px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -110,46 +129,73 @@
   align-items: center;
 }
 
-.char-img {
-  height: 250px;
-  width: 200px;
-  object-fit: cover;
-  transition: 0.5 ease;
-  opacity: 1;
-  backface-visibility: hidden;
+.img-group {
+  position: relative;
 }
 
-.char-img:hover {
-  opacity: 0.4;
+.char-img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  /* transition: 0.5 ease;
+  opacity: 1;
+  backface-visibility: hidden; */
+  margin-bottom: 10px;
+  border-radius: 30%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.568);
+  overflow: scroll;
+  width: 200px;
+  height: 200px;
+  transform: scale(0);
+  transition: 0.3s ease;
+  border-radius: 30%;
+}
+
+.img-group:hover .overlay {
+  transform: scale(1);
 }
 
 .character-name h4 {
   color: white;
   font-family: sans-serif;
+  height: 40px;
+  overflow: hidden;
 }
-
-.char-desc {
-  /* transition: 0.5s ease;
-  opacity: 0; */
-  text-align: center;
-  width: 150px;
-  height: 200px;
-  position: absolute;
-}
-
-/* .char-desc:hover {
-  opacity: 1;
-} */
 
 .description {
   color: white;
   font-family: sans-serif;
-  font-size: 12px;
-  width: 180px;
-  height: 200px;
-  display: flex;
-  align-items: center;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  height: 180px;
+}
+
+.nav-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-btns button {
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 30px;
+  width: 110px;
 }
 
 /*---------- COMICS ----------*/
@@ -165,10 +211,11 @@
 .comic-card {
   margin-right: 50px;
   width: 200px;
+  height: 350px;
 }
 
 .comic-name {
-  height: 500px;
+  height: 350px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -177,44 +224,181 @@
 }
 
 .comic-img {
-  height: 250px;
+  height: 200px;
   width: 200px;
   object-fit: cover;
-  transition: 0.5 ease;
+  /* transition: 0.5 ease;
   opacity: 1;
-  backface-visibility: hidden;
-}
-
-.comic-img:hover {
-  opacity: 0.4;
+  backface-visibility: hidden; */
+  margin-bottom: 10px;
+  border-radius: 30%;
 }
 
 .comic-name h4 {
   color: white;
   font-family: sans-serif;
+  height: 40px;
+  overflow: hidden;
 }
 
-.comic-desc {
-  text-align: center;
-  width: 200px;
-  height: 175px;
-  position: absolute;
-  transition: 0.5s ease;
-  opacity: 0;
-}
-
-.comic-desc:hover {
+/* .comic-desc:hover {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.555);
+} */
+
+/*---------- SIGN UP ----------*/
+.form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #252525;
+  height: 72vh;
 }
 
-.comic-description {
+.form-div h1 {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input {
+  width: 200px;
+  margin-bottom: 20px;
+  height: 25px;
+  border: none;
+  border-bottom: 0.4px solid red;
+  background-color: transparent;
+  color: white;
+}
+
+.form input::placeholder {
+  color: white;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form-btn {
+  background-color: red;
+  height: 30px;
+  width: 200px;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-link {
+  font-family: sans-serif;
+  /* text-decoration: tomato; */
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+/*---------- COMICS BY CHARACTER ----------*/
+.cbc-main {
+  background-color: #252525;
+}
+
+.cbc-main h2 {
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.cbc-main img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cbc-title-and-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.cbc-comic-title {
   color: white;
   font-family: sans-serif;
-  font-size: 12px;
-  width: 180px;
-  height: 200px;
+  height: 40px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.comicsByCharacterList {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.comicItem {
+  margin-right: 50px;
+  width: 200px;
+  height: 350px;
+  margin: 30px 30px;
+}
+
+.comicItem img {
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
+  /* transition: 0.5 ease;
+  opacity: 1;
+  backface-visibility: hidden; */
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.cbc-img-group {
+  position: relative;
+}
+
+.cbc-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.568);
+  overflow: scroll;
+  width: 200px;
+  height: 300px;
+  transform: scale(0);
+  transition: 0.3s ease;
+  border-radius: 10px;
+}
+
+.cbc-img-group:hover .cbc-overlay {
+  transform: scale(1);
+}
+
+.cbc-description {
+  color: white;
+  font-family: sans-serif;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  height: 280px;
 }

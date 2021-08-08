@@ -55,9 +55,9 @@ const Signup = ({ setUser }) => {
   };
 
   return (
-    <div>
+    <div className="form-div">
       <h1>Sign up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <input type="text" placeholder="Username" onChange={handleNameChange} />
         <input type="text" placeholder="Email" onChange={handleEmailChange} />
         <input
@@ -66,8 +66,10 @@ const Signup = ({ setUser }) => {
           onChange={handlePasswordChange}
         />
         <p style={{ color: "red" }}>{errorMessage}</p>
-        <button type="submit">Become a superhero</button>
-        <Link to={"/user/login"}>
+        <button type="submit" className="form-btn">
+          Become a superhero
+        </button>
+        <Link to={"/user/login"} className="form-link">
           Already a superhero ? Log in and put your mask on !
         </Link>
       </form>
