@@ -1,6 +1,7 @@
 // Hooks imports
 import { useState, useEffect } from "react";
 import axios from "axios";
+import loader from "../assets/iron-man-loader.gif";
 
 // Components imports
 
@@ -30,7 +31,9 @@ const Comics = ({ value }) => {
   }, [pagination.skip, pagination.limit, value]);
 
   return isLoading ? (
-    <span>Loading...</span>
+    <div className="loading">
+      <img className="loader" src={loader} alt="Loading..." />
+    </div>
   ) : (
     <div className="main">
       <div className="comics-list">

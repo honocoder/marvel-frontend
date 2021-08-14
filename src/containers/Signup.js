@@ -33,8 +33,8 @@ const Signup = ({ setUser }) => {
       const response = await axios.post(
         "https://marvel-backend-jm.herokuapp.com/user/signup",
         {
-          username: username,
           email: email,
+          username: username,
           password: password,
         }
       );
@@ -45,6 +45,7 @@ const Signup = ({ setUser }) => {
         setUser(token);
         history.push("/");
       }
+      console.log(handleSubmit);
     } catch (error) {
       console.log(error.message);
       if (error.message.status === 409) {

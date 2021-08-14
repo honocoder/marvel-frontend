@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import loader from "../assets/iron-man-loader.gif";
 
 const ComicsByCharacter = () => {
   const { id } = useParams();
@@ -25,7 +26,9 @@ const ComicsByCharacter = () => {
   }, [id]);
 
   return isLoading ? (
-    <span>Loading...</span>
+    <div className="loading">
+      <img className="loader" src={loader} alt="Loading..." />
+    </div>
   ) : (
     <div className="cbc-main">
       <div className="cbc-title-and-img">

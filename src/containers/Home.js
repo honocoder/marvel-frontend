@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import loader from "../assets/iron-man-loader.gif";
 
 // Components imports
 
@@ -31,8 +32,7 @@ const Home = ({ value }) => {
 
   return isLoading ? (
     <div className="loading">
-      <span>Loading...</span>
-      <img src="./assets/iron-man-loader.gif" alt="" />
+      <img className="loader" src={loader} alt="Loading..." />
     </div>
   ) : (
     <div className="main">

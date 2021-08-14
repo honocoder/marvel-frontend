@@ -10,12 +10,21 @@ const Header = ({ userToken, setUser, setValue }) => {
   return userToken ? (
     <div className="header-loggedin">
       <div className="top-bar">
-        {/* <input type="search" placeholder="Rechercher" className="searchbar"/> */}
+        <input
+          type="search"
+          placeholder="Rechercher"
+          onChange={handleChange}
+          className="searchbar"
+        />
         <Link to={"/"}>
-          <img src={logo} alt="" />
+          <img className="signed-in-logo" src={logo} alt="" />
         </Link>
         <div className="buttons">
-          <Link onClick={() => setUser(null)}>Se déconnecter</Link>
+          <div className="signout-div">
+            <Link className="signout-btn" onClick={() => setUser(null)}>
+              Se déconnecter
+            </Link>
+          </div>
         </div>
       </div>
       <div className="menu">
